@@ -1,0 +1,40 @@
+Testiranje black box:
+
+  Prilikom računanja decimalnih zapisa ne prikazuje se adekvatan rezultat. 
+  Primer: 0.5-0.4 = 0.0999999940 ;
+          15.5-15.4 = 0.10000038 ;
+          15.02+15.04 = 30.060001;
+          15.2*15.4 =   234.07999.
+  
+  Kada delimo broj sa 0 dobijamo kao rezultat Infinity;
+  Kada se primene zagrade prijavljuje ERROR, ali to je u redu, ne postoji mogućnost aktiviranja zagrada.
+  Prilikom množenja brojeva preko milion pokazuje eksponencijalnu vrednost.         .
+
+Unit tests:
+
+public class TestCalculator {
+    public void testMultiplication (){
+        String MULTIPLICATION ="5*2";
+        String expectedResult ="10.0";
+        String realResult=Calculator.Run(MULTIPLICATION);
+        
+        if (realResult.equals(expectedResult)) {
+            System.out.println("Test is passed.");
+        } else {
+            System.out.println("Test is failed ");
+        }
+    }
+}
+
+
+
+
+
+public class TestRunner {
+    public static void main(String[]args){
+        TestCalculator prviTest = new TestCalculator();
+        prviTest.testMultiplication();
+        
+
+    }
+}
